@@ -51,12 +51,9 @@ public class TransitCalculator {
         100.00 + " per ride.";
     }
 
+    // Conduct tests here
     public static void main( String[] args ) {
-
-        int rides = 45;
-        int days =18;
-
-        TransitCalculator nyc = new TransitCalculator( rides, days );
+        TransitCalculator nyc = new TransitCalculator(12, 5);
         System.out.println( nyc.getBestFare());
     }
 }
