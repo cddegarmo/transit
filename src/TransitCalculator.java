@@ -3,34 +3,29 @@ result in the least expensive per-ride cost based on how many days and rides one
  */
 
 public class TransitCalculator {
+    private static int days;
+    private static int rides;
+    private static final String[] FARES = { "Pay-per-ride", "7-day Unlimited", "30-day Unlimited"};
+    private static final double[] FARE_PRICES = { 2.75, 33.00, 127.00 };
 
-    int days;
-    int rides;
+    private TransitCalculator() { }
 
-    String[] fares = { "Pay-per-ride", "7-day Unlimited", "30-day Unlimited"};
-    double[] farePrices = { 2.75, 33.00, 127.00 };
-
-    public TransitCalculator( int numRides, int numDays ) {
-        rides = numRides;
-        days = numDays;
-    }
-
-    public double unlimited7Price() {
+    private static double unlimited7Price() {
         double weeks = Math.ceil( days / 7.0 );
-        double totalCost = weeks * farePrices[ 1 ];
+        double totalCost = weeks * FARE_PRICES[ 1 ];
 
         return totalCost / rides;
     }
 
-    public double unlimited30Price() {
+    private static double unlimited30Price() {
         double periods = Math.ceil( days / 30.0 );
-        double totalCost = periods * farePrices[ 2 ];
+        double totalCost = periods * FARE_PRICES[ 2 ];
 
         return totalCost / rides;
     }
 
-    public double[] getRidePrices() {
-        double payPerRidePrice = farePrices[ 0 ];
+    private static double[] getRidePrices() {
+        double payPerRidePrice = FARE_PRICES[ 0 ];
         double sevenDayPrice = unlimited7Price();
         double thirtyDayPrice = unlimited30Price();
 
@@ -38,7 +33,9 @@ public class TransitCalculator {
         return priceList;
     }
 
-    public String getBestFare() {
+    public static String getBestFare(int days, int rides) {
+        TransitCalculator.days = days;
+        TransitCalculator.rides = rides;
         double[] ridePrices = getRidePrices();
         int winidx = 0;
 
@@ -47,13 +44,7 @@ public class TransitCalculator {
                 winidx = i;
             }
         }
-        return "You should get the " + fares[ winidx ] + " option at $" + Math.round( ridePrices[ winidx ] * 100.00 ) /
+        return "You should get the " + FARES[ winidx ] + " option at $" + Math.round( ridePrices[ winidx ] * 100.00 ) /
         100.00 + " per ride.";
-    }
-
-    // Conduct tests here
-    public static void main( String[] args ) {
-        TransitCalculator nyc = new TransitCalculator(12, 5);
-        System.out.println( nyc.getBestFare());
     }
 }
