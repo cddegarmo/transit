@@ -108,10 +108,4 @@ public class TunedTC {
         return String.format("You should get the %s option at $%.2f per ride.",
                 Fares.values()[best].kind(), prices[best]);
     }
-
-    // Conduct tests here
-    public static void main(String[] args) {
-        TunedTC test = new TunedTC();
-        System.out.println(test.getBestFare());
-    }
 }
