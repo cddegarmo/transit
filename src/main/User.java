@@ -1,3 +1,5 @@
+package main;
+
 public class User {
     public static void main(String[] args) {
         String output = TransitCalculator.getBestFare(5, 12);

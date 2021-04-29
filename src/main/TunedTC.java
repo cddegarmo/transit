@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Scanner;
 
 public class TunedTC {
@@ -35,6 +37,7 @@ public class TunedTC {
         public double price() { return price; }
     }
 
+    // Force static factory, prevent subclassing
     private TunedTC() {
         Scanner s = new Scanner(System.in);
         System.out.print("How many rides you anticipate during your trip: ");
