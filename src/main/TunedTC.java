@@ -68,7 +68,7 @@ public class TunedTC {
     private double get7DayReduced() {
         double weeks = Math.ceil(days / 7.0);
         double total = weeks * ReducedFares.WEEK.price();
-        return total / weeks;
+        return total / rides;
     }
 
     private double get30DayReduced() {

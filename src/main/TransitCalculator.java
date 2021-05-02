@@ -57,7 +57,7 @@ public class TransitCalculator {
             }
         }
         return "You should get the " + FARES[winidx] + " option at $" +
-             Math.round(ridePrices[winidx] * 100.00 ) / 100.00 +
+             Math.round(ridePrices[winidx] * 100 ) / 100.00 +
              " per ride.";
     }
 }
